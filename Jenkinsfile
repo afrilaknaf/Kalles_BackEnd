@@ -46,17 +46,34 @@ pipeline{
 
 
     post(
-        emailpost(
+        success{
+            emailpost(
             Subject:"SUCCESS BUILD ${env.JOB_NAME} and ${env.BUILD_NUMBER}",
             Body: """
             <h1>SUCCESS BUILD IN JENKINS</h1>
             <b>Job Name:</b> ${env.JOB_NAME} <br>
             <b>BUILD NUMBER is:</b> ${env.BUILD_NUMBER} <br>
             <b>BUILD URl is:</b> ${env.BUILD_URL} <br>
-            <b>Build Status is:</b> FAILURE
+            <b>Build Status is:</b> SUCCESS
             """,
             Useremail:"afrilaknaf85@gmail.com",
             Attachments:"index.js"
         )
+        }
+
+
+        failure{
+            emailpost(
+            Subject:"FAILURE BUILD ${env.JOB_NAME} and ${env.BUILD_NUMBER}",
+            Body: """
+            <h1>FAILURE BUILD IN JENKINS</h1>
+            <b>Job Name:</b> ${env.JOB_NAME} <br>
+            <b>BUILD NUMBER is:</b> ${env.BUILD_NUMBER} <br>
+            <b>BUILD URl is:</b> ${env.BUILD_URL} <br>
+            <b>Build Status is:</b> FAILURE
+            """,
+            Useremail:"afrilaknaf85@gmail.com",
+        )
+        }
     )
 }
