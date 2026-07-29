@@ -18,8 +18,8 @@ pipeline{
         stage("Check the file is exists"){
             steps{
                 script{
-                    if(fileExists(package.json) && fileExists(index.js)){
-                        bat "echp File is exists"
+                    if(fileExists("package.json") && fileExists("index.js")){
+                        bat "echo File is exists"
                     } else {
                         bat "echo File is not exists"
                     }
@@ -45,7 +45,7 @@ pipeline{
     }
 
 
-    post(
+    post{
         success{
             emailpost(
             Subject:"SUCCESS BUILD ${env.JOB_NAME} and ${env.BUILD_NUMBER}",
@@ -75,5 +75,5 @@ pipeline{
             Useremail:"afrilaknaf85@gmail.com",
         )
         }
-    )
+    }
 }
