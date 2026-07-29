@@ -11,3 +11,5 @@ router.get("/get",getproducts)
 router.get("/quick/:id",quickview)
 
 module.exports=router
+
+
